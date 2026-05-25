@@ -1,0 +1,13 @@
+id,name,type1,type2,hp,attack,defense,speed,generation,legendary
+1,Bulbasaur,Grass,Poison,45,49,49,45,1,false
+2,Ivysaur,Grass,Poison,60,62,63,60,1,false
+3,Venusaur,Grass,Poison,80,82,83,80,1,false
+4,Charmander,Fire,,39,52,43,65,1,false
+5,Charmeleon,Fire,,58,64,58,80,1,false
+6,Charizard,Fire,Flying,78,84,78,100,1,false
+25,Pikachu,Electric,,35,55,40,90,1,false
+144,Articuno,Ice,Flying,90,85,100,85,1,true
+145,Zapdos,Electric,Flying,90,90,85,100,1,true
+146,Moltres,Fire,Flying,90,100,90,90,1,true
+150,Mewtwo,Psychic,,106,110,90,130,1,true
+151,Mew,Psychic,,100,100,100,100,1,false

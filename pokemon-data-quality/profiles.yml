@@ -1,0 +1,7 @@
+pokemon_data_quality:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "pokemon.duckdb"
+      schema: main

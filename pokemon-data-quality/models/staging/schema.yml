@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: stg_pokemon
+    description: Cleaned Pokémon records with non-null names.
+    columns:
+      - name: id
+        description: National Pokédex number.
+        tests:
+          - unique
+          - not_null
+      - name: name
+        tests:
+          - not_null
+      - name: type1
+        tests:
+          - not_null
+      - name: hp
+        tests:
+          - not_null
+      - name: attack
+        tests:
+          - not_null
+      - name: defense
+        tests:
+          - not_null
+      - name: speed
+        tests:
+          - not_null
+      - name: generation
+        tests:
+          - not_null
+      - name: legendary
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [true, false]
+
+seeds:
+  - name: pokemon_raw
+    description: Raw Pokémon stats loaded from CSV.
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
