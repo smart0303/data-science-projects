@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_sales
+    description: Incrementally loaded, cleaned sales line items
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: order_date
+        tests:
+          - not_null
+      - name: line_total
+        tests:
+          - not_null

@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Landing zone for sales transactions
+    schema: raw
+    tables:
+      - name: sales_raw
+        description: Append-only sales orders from upstream systems
+        columns:
+          - name: order_id
+            description: Surrogate primary key
+          - name: created_at
+            description: Row ingest timestamp used for incremental loads

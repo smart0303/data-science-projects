@@ -1,0 +1,12 @@
+incremental_sales_etl:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "{{ env_var('DBT_PG_HOST', 'localhost') }}"
+      port: "{{ env_var('DBT_PG_PORT', '5432') | int }}"
+      user: "{{ env_var('DBT_PG_USER', 'postgres') }}"
+      password: "{{ env_var('DBT_PG_PASSWORD', 'postgres') }}"
+      dbname: "{{ env_var('DBT_PG_DATABASE', 'sales_dw') }}"
+      schema: public
+      threads: 4

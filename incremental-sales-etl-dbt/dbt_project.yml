@@ -1,0 +1,24 @@
+name: incremental_sales_etl
+version: 1.0.0
+config-version: 2
+
+profile: incremental_sales_etl
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+analysis-paths: ["analyses"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  incremental_sales_etl:
+    staging:
+      +schema: staging
+      +materialized: incremental
+    marts:
+      +schema: marts
+      +materialized: table
