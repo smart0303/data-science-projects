@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import os
+import time
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -12,7 +13,6 @@ from airflow import DAG
 from airflow.decorators import task
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python import get_current_context
-from airflow.sensors.filesystem import FileSensor
 
 API_URL = "https://api.open-meteo.com/v1/forecast"
 API_PARAMS = {
@@ -61,14 +61,15 @@ with DAG(
         )
         return dict(API_PARAMS)
 
-    # Step 3: wait until the readiness marker exists (depends on validate_api_config)
-    wait_for_dependencies = FileSensor(
-        task_id="wait_for_dependencies",
-        filepath=str(READY_MARKER),
-        poke_interval=5,
-        timeout=120,
-        mode="poke",
-    )
+    @task
+    def wait_for_dependencies() -> None:
+        """Step 3: sensor-style wait until validate_api_config writes the readiness marker."""
+        deadline = time.monotonic() + 120
+        while time.monotonic() < deadline:
+            if READY_MARKER.is_file():
+                return
+            time.sleep(5)
+        raise TimeoutError(f"Timed out waiting for dependency file: {READY_MARKER}")
 
     @task(
         retries=5,
@@ -160,9 +161,10 @@ with DAG(
 
     # Step 2: explicit dependency chain
     config = validate_api_config()
+    wait = wait_for_dependencies()
     weather_raw = fetch_weather(config)
     weather_rows = process_weather(weather_raw)
     csv_path = save_to_csv(weather_rows)
     summary = print_summary(weather_rows, csv_path)
 
-    start >> config >> wait_for_dependencies >> weather_raw >> weather_rows >> csv_path >> summary >> end
+    start >> config >> wait >> weather_raw >> weather_rows >> csv_path >> summary >> end

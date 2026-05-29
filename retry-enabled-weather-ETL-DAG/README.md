@@ -8,7 +8,7 @@ Apache Airflow pipeline that fetches hourly temperature forecasts for Los Angele
 |------|------|-------------|
 | 1 | `default_args` | DAG-wide `retries=3`, exponential backoff; `fetch_weather` overrides with `retries=5` |
 | 2 | Chain | `start` → `validate_api_config` → `wait_for_dependencies` → `fetch_weather` → `process_weather` → `save_to_csv` → `print_summary` → `end` |
-| 3 | `wait_for_dependencies` | `FileSensor` polls until `validate_api_config` writes `data/.pipeline_ready` |
+| 3 | `wait_for_dependencies` | Polls every 5s until `validate_api_config` writes `data/.pipeline_ready` |
 | 4 | `save_to_csv` | Writes `data/weather_YYYY-MM-DD.csv` |
 | 5 | `scripts/test_retry.ps1` | Sets `WEATHER_API_FAIL_ATTEMPTS=2` to simulate transient API errors |
 
