@@ -1,0 +1,9 @@
+order_id,product,category,quantity,unit_price,order_date
+1001,Laptop,Electronics,1,999.99,2026-05-01
+1002,Wireless Mouse,Electronics,2,29.99,2026-05-01
+1003,Desk Chair,Furniture,1,249.50,2026-05-02
+1004,USB Cable,Electronics,5,9.99,2026-05-02
+1005,Monitor,Electronics,1,349.00,2026-05-03
+1006,Standing Desk,Furniture,1,599.00,2026-05-03
+1007,Keyboard,Electronics,3,79.99,2026-05-03
+1008,Office Lamp,Furniture,2,45.00,2026-05-03

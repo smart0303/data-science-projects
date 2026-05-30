@@ -1,0 +1,9 @@
+services:
+  etl:
+    build: .
+    container_name: dockerized-etl-pipeline
+    volumes:
+      - ./data:/app/data:ro
+      - ./output:/app/output
+    environment:
+      - PYTHONUNBUFFERED=1
