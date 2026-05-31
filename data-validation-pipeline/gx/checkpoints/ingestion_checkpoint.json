@@ -1,0 +1,12 @@
+{
+  "actions": [],
+  "id": "1ee81469-8d68-4c62-8d93-80130cce8b50",
+  "name": "ingestion_checkpoint",
+  "result_format": "SUMMARY",
+  "validation_definitions": [
+    {
+      "id": "549e60e5-8346-4c9c-bd9b-f7b4e91b88f9",
+      "name": "ingestion_validation"
+    }
+  ]
+}
