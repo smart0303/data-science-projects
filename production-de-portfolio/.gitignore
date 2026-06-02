@@ -1,0 +1,14 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+logs/
+*.log
+dbt/target/
+dbt/dbt_packages/
+dbt/.user.yml
+airflow/logs/
+airflow/airflow.db
+airflow/airflow-webserver.pid
+output/
