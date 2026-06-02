@@ -1,0 +1,1 @@
+"""JSONPlaceholder → PostgreSQL ETL package."""
