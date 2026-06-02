@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: analytics_post_metrics
+    columns:
+      - name: user_id
+        tests:
+          - unique
+          - not_null
+      - name: post_count
+        tests:
+          - not_null

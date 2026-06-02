@@ -1,0 +1,27 @@
+name: production_de_portfolio
+version: 1.0.0
+config-version: 2
+
+profile: production_de_portfolio
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+analysis-paths: ["analyses"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  production_de_portfolio:
+    staging:
+      +schema: staging
+      +materialized: view
+    marts:
+      +schema: marts
+      +materialized: table
+    analytics:
+      +schema: analytics
+      +materialized: table
