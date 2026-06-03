@@ -1,0 +1,21 @@
+order_id,order_date,region,product_category,product,quantity,unit_price
+1001,2026-01-05,North,Electronics,Laptop,1,999.99
+1002,2026-01-06,South,Electronics,Wireless Mouse,2,29.99
+1003,2026-01-07,East,Furniture,Desk Chair,1,249.50
+1004,2026-01-08,West,Electronics,USB Cable,5,9.99
+1005,2026-01-09,North,Electronics,Monitor,1,349.00
+1006,2026-01-10,South,Furniture,Standing Desk,1,599.00
+1007,2026-01-11,East,Electronics,Keyboard,3,79.99
+1008,2026-01-12,West,Furniture,Office Lamp,2,45.00
+1009,2026-01-13,North,Office Supplies,Notebook Pack,10,4.50
+1010,2026-01-14,South,Electronics,Headphones,2,149.99
+1011,2026-01-15,East,Furniture,Bookshelf,1,189.00
+1012,2026-01-16,West,Office Supplies,Printer Paper,4,12.99
+1013,2026-01-17,North,Furniture,Ergonomic Chair,2,329.00
+1014,2026-01-18,South,Electronics,Tablet,1,499.00
+1015,2026-01-19,East,Office Supplies,Stapler,6,8.49
+1016,2026-01-20,West,Electronics,Webcam,3,59.99
+1017,2026-01-21,North,Electronics,Laptop,2,999.99
+1018,2026-01-22,South,Furniture,Conference Table,1,899.00
+1019,2026-01-23,East,Electronics,Monitor,2,349.00
+1020,2026-01-24,West,Office Supplies,Whiteboard,1,75.00
