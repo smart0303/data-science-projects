@@ -1,0 +1,21 @@
+customer_id,customer_name,region,segment
+1,Acme Corp,North,Enterprise
+2,Beta LLC,South,SMB
+3,Gamma Inc,East,Enterprise
+4,Delta Co,West,SMB
+5,Epsilon Ltd,North,Mid-Market
+6,Zeta Group,South,Enterprise
+7,Eta Partners,East,SMB
+8,Theta Systems,West,Enterprise
+9,Iota Retail,North,SMB
+10,Kappa Digital,South,Mid-Market
+11,Lambda Health,East,Enterprise
+12,Mu Logistics,West,SMB
+13,Nu Finance,North,Enterprise
+14,Xi Media,South,SMB
+15,Omicron Tech,East,Mid-Market
+16,Pi Manufacturing,West,Enterprise
+17,Rho Consulting,North,SMB
+18,Sigma Energy,South,Enterprise
+19,Tau Hospitality,East,SMB
+20,Upsilon Auto,West,Mid-Market
