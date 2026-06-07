@@ -1,0 +1,23 @@
+.venv/
+__pycache__/
+*.pyc
+
+# Lake and runtime artifacts
+lake/
+logs/
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+dbt/analytics.duckdb
+dbt/analytics.duckdb.wal
+
+# Airflow
+airflow.cfg
+airflow.db
+airflow-webserver.pid
+standalone_admin_password.txt
+
+# IDE
+.idea/
+.vscode/

@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: lake
+    description: Parquet exports from the Spark medallion lake
+    tables:
+      - name: silver_orders
+        description: Curated Silver order records exported as partitioned Parquet
+      - name: gold_sales_by_region
+        description: Gold regional sales mart exported as Parquet

@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: Incremental staging view of curated Silver orders
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: order_date
+        tests:
+          - not_null
+      - name: region
+        tests:
+          - not_null
+      - name: product_category
+        tests:
+          - not_null
+      - name: quantity
+        tests:
+          - not_null
+      - name: unit_price
+        tests:
+          - not_null
+      - name: line_total
+        tests:
+          - not_null

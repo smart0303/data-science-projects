@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: sales_by_region
+    description: Regional sales KPIs for BI dashboards
+    columns:
+      - name: region
+        tests:
+          - unique
+          - not_null
+      - name: total_sales
+        tests:
+          - not_null
+
+  - name: sales_daily_summary
+    description: Daily revenue and order counts (incremental)
+    columns:
+      - name: order_date
+        tests:
+          - unique
+          - not_null
+
+  - name: sales_monthly_summary
+    description: Monthly revenue rollup from staging orders
+    columns:
+      - name: order_month
+        tests:
+          - unique
+          - not_null
