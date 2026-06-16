@@ -13,6 +13,7 @@ A hands-on learning project for Apache Kafka — from core concepts to building 
 | **05 — Simple Consumer** | Python consumer, read messages from topics | Complete |
 | **06 — Connect Pipeline** | End-to-end producer → Kafka → consumer demo | Complete |
 | **07 — JSON Messages** | Structured JSON events, serialize and parse | Complete |
+| **08 — Error Handling** | Retries, logging, fault tolerance basics | Complete |
 
 ## Topic 01 deliverables
 
@@ -59,9 +60,18 @@ A hands-on learning project for Apache Kafka — from core concepts to building 
 - [Run script](topic-07-json-messages/run-json-demo.ps1)
 - Screenshot: `topic-07-json-messages/screenshots/json-pipeline.png`
 
+## Topic 08 deliverables
+
+- [Error handling guide](topic-08-error-handling/error-handling-notes.md)
+- [Error handling examples](topic-08-error-handling/error-examples.md)
+- [Producer with error handling](topic-08-error-handling/producer.py)
+- [Consumer with error handling](topic-08-error-handling/consumer.py)
+- [Demo script](topic-08-error-handling/run-error-demo.ps1)
+- Screenshot: `topic-08-error-handling/screenshots/error-handling.png`
+
 ## Expected outcome
 
-After completing Topics 01–07, you should understand and run the full data flow:
+After completing Topics 01–08, you should understand and run the full data flow:
 
 **Producer → Kafka Topic → Consumer**
 
@@ -72,3 +82,4 @@ After completing Topics 01–07, you should understand and run the full data flo
 - Consume messages with Python (Topic 05)
 - Connect producer and consumer in an end-to-end pipeline (Topic 06)
 - Exchange structured JSON event data between services (Topic 07)
+- Handle connection failures, bad messages, and retries (Topic 08)
