@@ -12,6 +12,7 @@ A hands-on learning project for Apache Kafka — from core concepts to building 
 | **04 — Simple Producer** | Python producer, publish messages to topics | Complete |
 | **05 — Simple Consumer** | Python consumer, read messages from topics | Complete |
 | **06 — Connect Pipeline** | End-to-end producer → Kafka → consumer demo | Complete |
+| **07 — JSON Messages** | Structured JSON events, serialize and parse | Complete |
 
 ## Topic 01 deliverables
 
@@ -49,9 +50,18 @@ A hands-on learning project for Apache Kafka — from core concepts to building 
 - [Demo setup script](topic-06-connect-producer-consumer/run-pipeline-demo.ps1)
 - Screenshot: `topic-06-connect-producer-consumer/screenshots/pipeline-demo.png`
 
+## Topic 07 deliverables
+
+- [JSON fundamentals](topic-07-json-messages/json-fundamentals.md)
+- [JSON events setup and usage](topic-07-json-messages/json-events-notes.md)
+- [JSON producer](topic-07-json-messages/json_producer.py)
+- [JSON consumer](topic-07-json-messages/json_consumer.py)
+- [Run script](topic-07-json-messages/run-json-demo.ps1)
+- Screenshot: `topic-07-json-messages/screenshots/json-pipeline.png`
+
 ## Expected outcome
 
-After completing Topics 01–06, you should understand and run the full data flow:
+After completing Topics 01–07, you should understand and run the full data flow:
 
 **Producer → Kafka Topic → Consumer**
 
@@ -61,3 +71,4 @@ After completing Topics 01–06, you should understand and run the full data flo
 - Publish messages with Python (Topic 04)
 - Consume messages with Python (Topic 05)
 - Connect producer and consumer in an end-to-end pipeline (Topic 06)
+- Exchange structured JSON event data between services (Topic 07)
