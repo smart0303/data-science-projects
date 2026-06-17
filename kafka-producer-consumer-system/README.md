@@ -14,6 +14,7 @@ A hands-on learning project for Apache Kafka — from core concepts to building 
 | **06 — Connect Pipeline** | End-to-end producer → Kafka → consumer demo | Complete |
 | **07 — JSON Messages** | Structured JSON events, serialize and parse | Complete |
 | **08 — Error Handling** | Retries, logging, fault tolerance basics | Complete |
+| **09 — Mini Final Demo** | User signup event pipeline (event-driven app) | Complete |
 
 ## Topic 01 deliverables
 
@@ -69,9 +70,18 @@ A hands-on learning project for Apache Kafka — from core concepts to building 
 - [Demo script](topic-08-error-handling/run-error-demo.ps1)
 - Screenshot: `topic-08-error-handling/screenshots/error-handling.png`
 
+## Topic 09 deliverables
+
+- [Final demo guide](topic-09-mini-final-demo/demo-guide.md)
+- [Pipeline architecture](topic-09-mini-final-demo/pipeline-architecture.md)
+- [Signup producer](topic-09-mini-final-demo/signup_producer.py)
+- [Welcome email consumer](topic-09-mini-final-demo/signup_consumer.py)
+- [Run demo script](topic-09-mini-final-demo/run-demo.ps1)
+- Screenshots: `topic-09-mini-final-demo/screenshots/`
+
 ## Expected outcome
 
-After completing Topics 01–08, you should understand and run the full data flow:
+After completing Topics 01–09, you should understand and run the full data flow:
 
 **Producer → Kafka Topic → Consumer**
 
@@ -83,3 +93,4 @@ After completing Topics 01–08, you should understand and run the full data flo
 - Connect producer and consumer in an end-to-end pipeline (Topic 06)
 - Exchange structured JSON event data between services (Topic 07)
 - Handle connection failures, bad messages, and retries (Topic 08)
+- Build a simple event-driven application end to end (Topic 09)
