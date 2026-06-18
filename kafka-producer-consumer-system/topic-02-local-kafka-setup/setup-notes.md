@@ -7,10 +7,12 @@ Install and run Apache Kafka locally using Docker Desktop and Docker Compose.
 ## Project folder
 
 ```
-d:\Work\data-science-projects\kafka-producer-consumer\
-├── docker-compose.yml
-└── verify-setup.ps1
+kafka-producer-consumer-system/
+├── docker-compose.yml      # Kafka broker (project root)
+└── scripts/setup.ps1       # Setup helper
 ```
+
+> **Note:** Docker Compose was consolidated to the project root in Topic 10. The legacy `kafka-producer-consumer/` folder is kept for reference.
 
 ## Tasks checklist
 
@@ -41,7 +43,7 @@ Docker Compose version v2.x.x
 ### 3. Run Kafka
 
 ```powershell
-cd d:\Work\data-science-projects\kafka-producer-consumer
+cd d:\Work\data-science-projects\kafka-producer-consumer-system
 docker compose up -d
 ```
 

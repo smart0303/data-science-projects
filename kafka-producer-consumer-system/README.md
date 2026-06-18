@@ -1,96 +1,219 @@
 # Kafka Producer & Consumer System
 
-A hands-on learning project for Apache Kafka — from core concepts to building producers and consumers.
+An event-driven **user signup pipeline** built with **Apache Kafka** and **Python**. Demonstrates how producers and consumers communicate through Kafka topics without direct service coupling.
 
-## Topics
+```
+Signup Service  →  user-events (Kafka)  →  Welcome Email Service
+```
 
-| Topic | Focus | Status |
-|-------|-------|--------|
-| **01 — Kafka Basics** | Producer, Topic, Consumer, architecture | Complete |
-| **02 — Local Kafka Setup** | Docker Desktop, Docker Compose, run Kafka locally | Complete |
-| **03 — Create Kafka Topics** | Create, list, describe, delete topics | Complete |
-| **04 — Simple Producer** | Python producer, publish messages to topics | Complete |
-| **05 — Simple Consumer** | Python consumer, read messages from topics | Complete |
-| **06 — Connect Pipeline** | End-to-end producer → Kafka → consumer demo | Complete |
-| **07 — JSON Messages** | Structured JSON events, serialize and parse | Complete |
-| **08 — Error Handling** | Retries, logging, fault tolerance basics | Complete |
-| **09 — Mini Final Demo** | User signup event pipeline (event-driven app) | Complete |
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
+![Kafka](https://img.shields.io/badge/Apache%20Kafka-3.9-231F20?logo=apache-kafka)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
 
-## Topic 01 deliverables
+---
 
-- [Kafka concepts (one-page note)](topic-01-kafka-basics/kafka-concepts.md)
-- [Kafka architecture diagram](topic-01-kafka-basics/kafka-architecture.md)
+## Features
 
-## Topic 02 deliverables
+- **Kafka producer** — publishes structured `user_signup` JSON events
+- **Kafka consumer** — subscribes to topics, parses events, processes welcome emails
+- **Event-driven architecture** — decoupled services via message bus
+- **Error handling** — connection retries with exponential backoff
+- **Docker Compose** — local Kafka 3.9 broker (KRaft mode, no Zookeeper)
+- **Clean codebase** — shared `src/` library with config, events, producer, and consumer modules
+- **Full curriculum** — 10 hands-on topics from Kafka basics to portfolio deployment
 
-- [Local Kafka setup notes](topic-02-local-kafka-setup/setup-notes.md)
-- [Docker Compose config](../kafka-producer-consumer/docker-compose.yml) in `kafka-producer-consumer/`
+---
 
-## Topic 03 deliverables
+## Architecture
 
-- [Topic concepts and purpose](topic-03-create-kafka-topics/topic-notes.md)
-- [Kafka topic commands reference](topic-03-create-kafka-topics/topic-commands.md)
-- [Automated topic setup script](topic-03-create-kafka-topics/manage-topics.ps1)
-- Screenshot: `topic-03-create-kafka-topics/screenshots/topics-list.png` (capture after running the script)
+```mermaid
+flowchart LR
+    subgraph Producer["Signup Service"]
+        P["producer.py"]
+    end
 
-## Topic 04 deliverables
+    subgraph Kafka["Apache Kafka"]
+        T["user-events"]
+    end
 
-- [Working producer.py](topic-04-simple-producer/producer.py)
-- Screenshot: `topic-04-simple-producer/screenshots/producer-output.png`
+    subgraph Consumer["Welcome Email Service"]
+        C["consumer.py"]
+    end
 
-## Topic 05 deliverables
+    P -->|"user_signup JSON"| T
+    T --> C
+```
 
-- [Consumer setup and usage notes](topic-05-simple-consumer/consumer-notes.md)
-- [Working consumer.py](topic-05-simple-consumer/consumer.py)
-- [Run script](topic-05-simple-consumer/run-consumer.ps1)
-- Screenshot: `topic-05-simple-consumer/screenshots/consumer-output.png`
+See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed diagrams and design decisions.
 
-## Topic 06 deliverables
+---
 
-- [End-to-end pipeline demo guide](topic-06-connect-producer-consumer/pipeline-demo.md)
-- [Pipeline architecture diagram](topic-06-connect-producer-consumer/pipeline-architecture.md)
-- [Demo setup script](topic-06-connect-producer-consumer/run-pipeline-demo.ps1)
-- Screenshot: `topic-06-connect-producer-consumer/screenshots/pipeline-demo.png`
+## Quick start
 
-## Topic 07 deliverables
+### Prerequisites
 
-- [JSON fundamentals](topic-07-json-messages/json-fundamentals.md)
-- [JSON events setup and usage](topic-07-json-messages/json-events-notes.md)
-- [JSON producer](topic-07-json-messages/json_producer.py)
-- [JSON consumer](topic-07-json-messages/json_consumer.py)
-- [Run script](topic-07-json-messages/run-json-demo.ps1)
-- Screenshot: `topic-07-json-messages/screenshots/json-pipeline.png`
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- Python 3.10+
 
-## Topic 08 deliverables
+### Setup
 
-- [Error handling guide](topic-08-error-handling/error-handling-notes.md)
-- [Error handling examples](topic-08-error-handling/error-examples.md)
-- [Producer with error handling](topic-08-error-handling/producer.py)
-- [Consumer with error handling](topic-08-error-handling/consumer.py)
-- [Demo script](topic-08-error-handling/run-error-demo.ps1)
-- Screenshot: `topic-08-error-handling/screenshots/error-handling.png`
+```powershell
+git clone https://github.com/YOUR_USERNAME/kafka-producer-consumer-system.git
+cd kafka-producer-consumer-system
 
-## Topic 09 deliverables
+# Start Kafka + create topics + install Python deps
+.\scripts\setup.ps1
 
-- [Final demo guide](topic-09-mini-final-demo/demo-guide.md)
-- [Pipeline architecture](topic-09-mini-final-demo/pipeline-architecture.md)
-- [Signup producer](topic-09-mini-final-demo/signup_producer.py)
-- [Welcome email consumer](topic-09-mini-final-demo/signup_consumer.py)
-- [Run demo script](topic-09-mini-final-demo/run-demo.ps1)
-- Screenshots: `topic-09-mini-final-demo/screenshots/`
+# Activate virtual environment
+.\.venv\Scripts\Activate.ps1
+```
 
-## Expected outcome
+### Run the demo
 
-After completing Topics 01–09, you should understand and run the full data flow:
+**Terminal 1 — Welcome Email Service (start first):**
 
-**Producer → Kafka Topic → Consumer**
+```powershell
+python consumer.py
+```
 
-- Explain core Kafka concepts (Topic 01)
-- Run Kafka locally with Docker (Topic 02)
-- Create and manage topics (Topic 03)
-- Publish messages with Python (Topic 04)
-- Consume messages with Python (Topic 05)
-- Connect producer and consumer in an end-to-end pipeline (Topic 06)
-- Exchange structured JSON event data between services (Topic 07)
-- Handle connection failures, bad messages, and retries (Topic 08)
-- Build a simple event-driven application end to end (Topic 09)
+**Terminal 2 — Signup Service:**
+
+```powershell
+python producer.py
+```
+
+The producer registers **5 users**. The consumer receives each signup and simulates a welcome email.
+
+Or use the demo script:
+
+```powershell
+.\scripts\run-demo.ps1
+```
+
+---
+
+## Project structure
+
+```
+kafka-producer-consumer-system/
+├── producer.py              # Signup Service entry point
+├── consumer.py              # Welcome Email Service entry point
+├── docker-compose.yml       # Local Kafka broker
+├── requirements.txt
+├── src/                     # Shared library
+│   ├── config.py            # Broker, topics, retry settings
+│   ├── events.py            # Event schemas and validation
+│   ├── producer.py          # KafkaEventProducer class
+│   └── consumer.py          # KafkaEventConsumer class
+├── scripts/
+│   ├── setup.ps1            # One-command setup
+│   └── run-demo.ps1         # Demo instructions
+├── ARCHITECTURE.md          # System diagrams
+├── PROJECT_SUMMARY.md       # Portfolio summary
+├── docs/CURRICULUM.md       # Learning path (Topics 01–09)
+└── topic-*/                 # Hands-on exercises
+```
+
+---
+
+## Event schema
+
+```json
+{
+  "event_type": "user_signup",
+  "event_id": "evt-a1b2c3d4",
+  "user_id": "u-2001",
+  "name": "Alice Smith",
+  "email": "alice@example.com",
+  "plan": "free",
+  "timestamp": "2026-06-10T14:00:00Z"
+}
+```
+
+---
+
+## Sample output
+
+**Producer:**
+
+```
+==================================================
+  USER SIGNUP SERVICE — Event Producer
+==================================================
+
+Registering: Alice Smith (alice@example.com)
+14:00:01 [INFO] Event published | type=user_signup | topic=user-events | offset=0
+...
+  5/5 signup events published to 'user-events'
+```
+
+**Consumer:**
+
+```
+  NEW USER SIGNUP RECEIVED
+  Name      : Alice Smith
+  Email     : alice@example.com
+  [EMAIL] Subject : Welcome to our platform, Alice!
+  [EMAIL] Status  : SENT
+```
+
+---
+
+## Learning curriculum
+
+| Topic | Focus |
+|-------|-------|
+| 01 | Kafka basics — producer, topic, consumer |
+| 02 | Local Kafka setup with Docker |
+| 03 | Create and manage topics |
+| 04 | Simple Python producer |
+| 05 | Simple Python consumer |
+| 06 | End-to-end pipeline demo |
+| 07 | JSON structured events |
+| 08 | Error handling and retries |
+| 09 | Mini final demo — signup pipeline |
+| 10 | Portfolio refactor and GitHub |
+
+Full index: [docs/CURRICULUM.md](docs/CURRICULUM.md)
+
+---
+
+## Key concepts demonstrated
+
+| Concept | Implementation |
+|---------|----------------|
+| **Producer** | `KafkaEventProducer` publishes JSON to `user-events` |
+| **Topic** | `user-events` with 3 partitions |
+| **Consumer** | `KafkaEventConsumer` in group `welcome-email-service` |
+| **Offsets** | Auto-committed; consumer resumes after restart |
+| **Partition key** | `user_id` routes events consistently |
+| **Fault tolerance** | Retry with exponential backoff on connect/send |
+
+---
+
+## Troubleshooting
+
+| Issue | Fix |
+|-------|-----|
+| `NoBrokersAvailable` | Run `docker compose up -d` and wait ~30s |
+| `docker` not found | Install and start Docker Desktop |
+| No messages in consumer | Reset group: see `scripts/run-demo.ps1` |
+| `ModuleNotFoundError` | Activate venv: `.\.venv\Scripts\Activate.ps1` |
+
+---
+
+## Documentation
+
+- [Architecture](ARCHITECTURE.md) — diagrams and design
+- [Project summary](PROJECT_SUMMARY.md) — portfolio one-pager
+- [Portfolio guide](topic-10-portfolio-review/portfolio-guide.md) — GitHub deployment
+
+---
+
+## License
+
+MIT — free to use for learning and portfolio purposes.
+
+---
+
+*Built as a hands-on project demonstrating event streaming with Apache Kafka.*
